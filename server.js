@@ -17,5 +17,9 @@ const server = http.createServer((rq, res) => {
       res.end('UNKNOWN')
     }
 })
+server.on('connection',socket => {
+console.log('Someone connected',socket);
+})
+
 
 server.listen(PORT, () => console.log('Started our server'));
