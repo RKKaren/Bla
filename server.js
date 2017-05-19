@@ -1,15 +1,16 @@
 'use strict'
 
 const http = require('http');
-const ports = require('./ports');
+const {PORT, upper, poqr} = require('./ports');
+const [a, b] = [1, 2]
 const server = http.createServer((rq, res) => {
     if (rq.url === '/') {
       res.setHeader('content-type','text/html');
       res.end(`
         <!doctype html>
         <body>
-        <h1>${ports.upper(__dirname)}</h1>
-        <p>what a body =P </p>
+        <h1>${upper(__dirname)}</h1>
+        <p>${poqr('WHAT a body =P') }</p>
         </body>
       `)
     } else {
@@ -17,4 +18,4 @@ const server = http.createServer((rq, res) => {
     }
 })
 
-server.listen(8080, () => console.log('Started our server'));
+server.listen(PORT, () => console.log('Started our server'));
